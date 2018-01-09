@@ -1,0 +1,7 @@
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\bin\Debug\FOL_IFC.exe.config
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\bin\Debug\FOL_IFC.exe
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\bin\Debug\FOL_IFC.pdb
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\obj\Debug\FOL_IFC.csprojResolveAssemblyReference.cache
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\obj\Debug\FOL_IFC.csproj.CoreCompileInputs.cache
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\obj\Debug\FOL_IFC.exe
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\FOL_IFC\FOL_IFC\obj\Debug\FOL_IFC.pdb

@@ -1,0 +1,37 @@
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+  background-color: #CDB87D;
+}
+
+#content-container {
+  display: table;
+  width: 85%;
+  height: auto;
+  margin: 3% auto;
+  text-align: center;
+  background-color: #1C2957;
+  color: #FEFEFA;
+  border-radius: 50px;
+  border: 3px solid #1b1b1b;
+}
+
+div>hr {
+  width: 90%;
+  height: 1px;
+  margin: 0 5% 2% 5%;
+  border: 0;
+  background: #ccc;
+  background: -webkit-gradient(linear, 0 0, 100% 0, from(#1C2957), to(#1C2957), color-stop(50%, #ccc));
+  text-align: center;
+}
+
+p{
+  font-size: 20px;
+}
+
+p+p {
+  margin-top: 1%;
+}

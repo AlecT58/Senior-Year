@@ -1,0 +1,64 @@
+Test 1
+-------------------------------------
+Goal was reached? False
+Inference made: TooBig(Bob)
+Inference made: Dog(Sally)
+Inference made: GoodSize(Sally)
+
+Test 2
+-------------------------------------
+Goal was reached? False
+Inference made: TooBig(Bob)
+Inference made: Dog(Sally)
+Inference made: GoodSize(Sally)
+
+Test 3
+-------------------------------------
+Goal was reached? False
+Inference made: Sibling(Frances,Frances)
+Inference made: Cousin(Frances,Frances)
+Inference made: Distinct(Rachel,Eric)
+
+Test 4
+-------------------------------------
+Goal was reached? False
+Inference made: Sibling(Frances,Frances)
+Inference made: Cousin(Frances,Frances)
+Inference made: Distinct(Rachel,Eric)
+
+Test 5
+-------------------------------------
+Goal was reached? False
+Inference made: Sibling(Frances,Frances)
+Inference made: Cousin(Frances,Frances)
+Inference made: Distinct(Rachel,Eric)
+
+Test 6
+-------------------------------------
+Goal was reached? False
+Inference made: Sibling(Frances,Frances)
+Inference made: Cousin(Frances,Frances)
+Inference made: Distinct(Rachel,Eric)
+
+Test 7
+-------------------------------------
+Goal was reached? False
+Inference made: Sibling(Frances,Frances)
+Inference made: Cousin(Frances,Frances)
+Inference made: Distinct(Rachel,Eric)
+
+Test 8
+-------------------------------------
+Goal was reached? True
+Inference made: Roman(Marcus)
+Inference made: People(Marcus)
+Inference made: Traitor(Marcus)
+Goal Reached: Hate(Marcus,Caesar)
+
+Test 9
+-------------------------------------
+Goal was reached? False
+Inference made: Roman(Marcus)
+Inference made: People(Marcus)
+Inference made: Traitor(Marcus)
+Inference made: Hate(Marcus,Caesar)
