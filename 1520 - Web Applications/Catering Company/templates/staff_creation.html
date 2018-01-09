@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Catering Co. | Register New Staff Member</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/CSS/forms.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Catering Co.</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="owner_homepage">Owner Home</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="logout">
+                        <span class="glyphicon glyphicon-log-out"></span> Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Oh no!</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="container">
+        <form class="form-signin" id='registerForm' name='registerForm' method="POST">
+            <h2 class="form-signin-heading">Please Enter the New Employee's Info</h2>
+            <label for="inputUserName" class="sr-only">New Username</label>
+            <input type="text" id="inputUserName" name='username' class="form-control" placeholder="New Username" maxlength='80' required>
+            <label for="inputPassword" class="sr-only">New Password</label>
+            <input type="password" id="inputPassword" name='password' class="form-control" placeholder="Password" maxlength='80' required>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Register New Staff Member</button>
+        </form>
+    </div>
+</body>
+
+</html>

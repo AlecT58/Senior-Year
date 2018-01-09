@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catering Co. | Owner Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/CSS/forms.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Catering Co.</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="staff_creation">Create New Staff Member</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="logout">
+                        <span class="glyphicon glyphicon-log-out"></span> Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %} 
+        {% if messages %} 
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    <strong>Success!</strong> {{ message }}
+                </div>
+            {% endfor %} 
+        {% endif %} 
+    {% endwith %}
+
+    <div class='container'>
+        <h1 id='displayDate'></h1>
+        <h3 id='noEvents'>No events are currently scheduled</h3>
+        <h3 id='warningText'>NOTE: Events with a <span style='color:red'>red background</span> do not have anyone workers assigned to them!</h3>
+
+        <table class="table table-responsive table-hover" id='tblEvents'>
+            <caption>List of Events:</caption>
+            <thead>
+                <tr>
+                    <th>
+                        Event Title
+                    </th>
+                    <th>
+                        Scheduled Date
+                    </th>
+                    <th>
+                        First Worker
+                    </th>
+                    <th>
+                        Second Worker
+                    </th>
+                    <th>
+                        Third Worker
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if all_events %}
+                    {% for event in all_events %}
+                        {% if event.first_worker_id is none and event.second_worker_id is none and event.third_worker_id is none %}
+                            <tr class="danger">
+                        {% else %}
+                            <tr>
+                        {% endif %}
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.dateEntered }}</td>
+                            <td> {{ event.first_worker_id }} </td>
+                            <td> {{ event.second_worker_id }} </td>
+                            <td> {{ event.third_worker_id }} </td>
+                            </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript" src='../static/javascript/greeting.js'>
+    </script>
+    <script type="text/javascript">       
+        showDate();
+        hideTable();
+
+        function hideTable() {
+            let numEvents = $('#tblEvents tbody tr');
+
+            if(numEvents.length > 0) {
+                $('#noEvents').hide();  
+            } else {
+                $('#tblEvents').hide(); 
+                $('#warningText').hide();
+            }
+        }
+    </script>
+</body>
+
+</html>

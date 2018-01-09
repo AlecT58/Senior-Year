@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+  Name: Alec B. Trievel
+  ID: 3946128
+  Project #: 2
+  Files: battleship.html, board.css, /javascript/play_battleship.js
+  Date Submitted: 9/29/2017
+-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Battleship | Alec Trievel</title>
+
+    <link rel="stylesheet" href="board.css">
+</head>
+
+<body>
+    <div id='hideBoards' onclick="showBoards()">
+        <h1 id='playerTurn'></h1>
+        <h2>Click anywhere to start...</h2>
+    </div>
+    <div id='highScores'>
+        <h1 id='winnerMessage'></h1>
+        <div id='scoreOutline'>
+            <h2>High Scores</h2>
+            <ol id='scoresList'></ol>
+            <br>
+        </div>
+    </div>
+    <div id='topGridContainer' class='centered'>
+        <table id='topGrid'>
+            <thead>
+                <th>
+                    <tr>
+                        <th>
+                            </td>
+                            <td class='board_labels'>A</td>
+                            <td class='board_labels'>B</td>
+                            <td class='board_labels'>C</td>
+                            <td class='board_labels'>D</td>
+                            <td class='board_labels'>E</td>
+                            <td class='board_labels'>F</td>
+                            <td class='board_labels'>G</td>
+                            <td class='board_labels'>H</td>
+                            <td class='board_labels'>I</td>
+                            <td class='board_labels'>J</td>
+                    </tr>
+                    </th>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id='bottomGridContainer' class='centered'>
+        <table id='bottomGrid'>
+            <thead>
+                <th>
+                    <tr>
+                        <td></td>
+                        <td class='board_labels'>A</td>
+                        <td class='board_labels'>B</td>
+                        <td class='board_labels'>C</td>
+                        <td class='board_labels'>D</td>
+                        <td class='board_labels'>E</td>
+                        <td class='board_labels'>F</td>
+                        <td class='board_labels'>G</td>
+                        <td class='board_labels'>H</td>
+                        <td class='board_labels'>I</td>
+                        <td class='board_labels'>J</td>
+                    </tr>
+
+                </th>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script type="text/javascript" src="javascript/play_battleship.js"></script>
+
+</html>

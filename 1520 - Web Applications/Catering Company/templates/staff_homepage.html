@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catering Co. | Employee Home</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/CSS/forms.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Catering Co.</a>
+            </div>
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="logout">
+                        <span class="glyphicon glyphicon-log-out"></span> Log Out
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %} 
+        {% if messages %} 
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    <strong>Success!</strong> {{ message }}
+                </div>
+            {% endfor %} 
+        {% endif %} 
+    {% endwith %}
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Oh no!</strong> {{ error }}
+    </div>
+  {% endif %}
+
+    <div class='container'>
+        <h1 id='displayDate'></h1>
+        <h3 id='noEventsAssigned'>You are currently not signed up for any events</h3>
+        <table class="table table-responsive table-hover" id='tblSigned'>
+            <caption>Events You are Signed Up to Work:</caption>
+            <thead>
+                <tr>
+                    <th>
+                        Event Title
+                    </th>
+                    <th>
+                        Scheduled Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if signed_up %}
+                    {% for event in signed_up %}
+                    <tr>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.dateEntered }}</td>
+                    {% endfor %}
+                {% endif %}
+                </tr>
+            </tbody>
+        </table>
+
+        <form id='eventsForm' name='eventsForm' method="POST">
+            <h3 id='noEventsAvailable'>No events are currently available for you to sign up for</h3>
+            <table class="table table-responsive table-hover" id='tblAvailable'>
+                <caption>Events You Can Sign Up to Work:</caption>
+                <thead>
+                    <tr>
+                        <th>
+                            Event Title
+                        </th>
+                        <th>
+                            Scheduled Date
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if available %}
+                        {% for event in available %}
+                        <tr>
+                            <td>{{ event.title }}</td>
+                            <td>{{ event.dateEntered }}</td>
+                            <td style="width:15%">
+                                    <button class="btn btn-lg btn-primary btn-block" name='sign_up' value={{ event.event_id }} type="submit">Sign Up for Event</button>
+                            </td>
+                        {% endfor %}
+                    {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    <script type="text/javascript" src='../static/javascript/greeting.js'>
+    </script>
+    <script type="text/javascript">
+        showDate();
+        hideAssignedTable();
+        hideAvailableTable();
+
+        function hideAssignedTable() {
+            let numEvents = $('#tblSigned tbody tr');
+
+            if(numEvents.length > 0) {
+                $('#noEventsAssigned').hide();  
+            } else {
+                $('#tblSigned').hide(); 
+            }
+        }
+
+        function hideAvailableTable() {
+            let numEvents = $('#tblAvailable tbody tr');
+
+            if(numEvents.length > 0) {
+                $('#noEventsAvailable').hide();  
+            } else {
+                $('#tblAvailable').hide(); 
+            }
+        }
+    </script>
+</body>
+
+</html>

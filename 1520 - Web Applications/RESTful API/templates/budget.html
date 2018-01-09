@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Budget Buddy</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Welcome to Budget Buddy!</h1>
+        <p class="lead">Voted the best budgeting application on the web in 2017</p>
+        <img src="static/vault_boy.png" class="img-fluid" alt="" style="max-width:20%; max-height:20%">
+    </div>
+
+    <div class="container">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Add New Category</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert" style="display: none" id='categoryHttpError'>
+                    <strong>Oh no!</strong> <span id='categoryHttpErrorMessage'></span>
+                </div>
+                <div class="alert alert-success" role="alert" style="display: none" id='categoryHttpSuccess'>
+                    <strong>Success!</strong> <span id='categoryHttpSuccessMessage'></span>
+                </div>
+                <div class="form-group row">
+                    <label for="categoryName" class="col-3 col-form-label">Category Name</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" id="categoryName">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="categoryLimit" class="col-3 col-form-label">Category Spending Limit</label>
+                    <div class="col-9">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" id="categoryLimit">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-lg btn-primary" id="btnAddNewCategory" style="cursor: pointer">Add Category</button>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Delete Category</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success" role="alert" style="display: none" id='categoryHttpDelete'>
+                    <strong>Success!</strong> <span id='categoryDeleteMessage'></span>
+                </div>
+                <div class="text-center">
+                    <div class="dropdown">
+                        <button class="btn btn-primary btn-lg dropdown-toggle" type="button" id="dropdownSelectDeleteCategory" data-toggle="dropdown" style="cursor: pointer">
+                            Select Category...
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="ddlDeleteCategories">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>Add New Purchase</h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success" role="alert" style="display: none" id='purchaseRecorded'>
+                    <strong>Success!</strong> <span id='purchaseRecordedMessage'></span>
+                </div>
+                <div class="form-group row">
+                    <label for="dropdownSelectCategory" class="col-3 col-form-label">Purchase Category</label>
+                    <div class="col-9">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSelectCategory" data-toggle="dropdown" style="cursor: pointer">
+                                Select Category...
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id='ddlSelectPurchaseCategory'> 
+                            </div>
+                            <label for='ddlSelectPurchaseCategory' class='col-form-label' id='lblForPurchaseCategory'></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="purchaseDescription" class="col-3 col-form-label">Description</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" id="purchaseDescription">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="purchaseAmountSpent" class="col-3 col-form-label">Amount Spent</label>
+                    <div class="col-9">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" id="purchaseAmountSpent">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="datePurchased" class="col-3 col-form-label">Date Purchased</label>
+                    <div class="col-9">
+                        <div class="input-group">
+                            <input type="date" class="form-control" id="datePurchased">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-lg btn-primary" id="btnAddNewPurchase" style="cursor: pointer">Add Purchase</button>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>View Budget Statistics</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive prescrollable card-body">
+                    <table class="table table-sm" id='tblBudgetStats'>
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Spending Limit</th>
+                                <th>Amount Spent</th>
+                                <th>Amount Remaining</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='../static/REST_API.js'></script>
+    <script type='text/javascript'>
+
+    </script>
+</body>

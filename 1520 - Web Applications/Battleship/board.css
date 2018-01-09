@@ -1,0 +1,94 @@
+    /*
+Name: Alec B.Trievel
+ID: 3946128
+Project#: 2
+Files: battleship.html, board.css, /javascript/play_battleship.js
+Date Submitted: 9 / 29 / 2017
+*/
+    
+    div.centered {
+        margin: 0 auto 1% auto;
+        text-align: center;
+        width: 50%;
+    }
+    
+    .grid_pieces {
+        border: 1px solid black;
+        width: 20px;
+        height: 20px;
+        padding: 5px;
+        background-color: #A0E6FF;
+        color: black;
+    }
+    
+    .grid_pieces:hover {
+        background-color: yellow;
+        cursor: pointer;
+    }
+    
+    .board_labels {
+        text-align: center;
+        width: 10px;
+        height: 10px;
+        color: black;
+        font-weight: 600;
+        background-color: transparent;
+        border: none;
+    }
+    
+    table {
+        align-self: center;
+        margin: 0 auto;
+    }
+    
+    .hit_ship {
+        background-color: red;
+        color: black;
+    }
+    
+    .unhit_ship {
+        background-color: gray;
+        color: white;
+    }
+    
+    .missed_ship {
+        background-color: white;
+    }
+    
+    #hideBoards,
+    #highScores {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        cursor: pointer;
+        text-align: center;
+    }
+    
+    #playerTurn,
+    #winnerMessage,
+    h2,
+    ol {
+        color: white;
+        text-align: center;
+        vertical-align: center;
+    }
+    
+    ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    li {
+        text-align: center;
+    }
+    
+    #scoreOutline {
+        border: 2px solid white;
+    }

@@ -1,0 +1,69 @@
+{% extends "base.html" %} 
+{% block title %}Chatrooms{% endblock %}
+
+<body>
+  {% block navbar %}
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Chatty Cathy</a>
+      </div>
+    <ul class="nav navbar-nav">
+        <li>
+          <a href="create_chatroom">Create New Chatroom</a>
+        </li>
+      </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="logout">
+                <span class="glyphicon glyphicon-log-out"></span> Log Out
+            </a>
+        </li>
+    </ul>
+    </div>
+  </nav>
+  {% endblock %} 
+  
+  {% block messages %} {{ super() }} {% endblock %} 
+  {% block errors %} {{ super() }} {% endblock %}
+  {% block body %}
+  <div class='container'>
+      <div class='well'>
+        {% if chatrooms %}
+          <h1 class='text-center'><strong>Available Chatrooms</strong></h1>
+          <form id='signInForm' name='signInForm' method="POST">
+            <table id='tblChatrooms' class='table table-condensed table-responsive table-hover' style='word-wrap:break-word; table-layout:fixed'>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for room in chatrooms %}
+                    <tr> 
+                      <td>
+                        {{ room.name }} 
+                      </td>
+                      <td class='text-center'>
+                        <a href="chatroom/{{ room.name }}" class="btn btn-lg btn-success">Join Room</a>
+                      </td>
+                      {% if room.creator_id == session["user_id"] %}
+                        <td class='text-center'>
+                          <button class="btn btn-lg btn-danger" id='d{{ room.room_id }}'>Delete Room</button>
+                          <input type='hidden' value="{{ room.room_id }}" name='toDelete' readonly>
+                        </td>
+                      {% else %}
+                        <td></td>
+                      {% endif %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+          </form>
+          {% else %}
+          <h1 class='text-center text-danger'><strong>No Available Chatrooms</strong></h1>
+          {% endif %}
+      </div>
+  </div>
+  {% endblock %}
+</body>

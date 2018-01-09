@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <title>Chatty Cathy | {% block title %}{% endblock %}</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='forms.css') }}">
+</head>
+<body>
+    {% block navbar %}{% endblock %}
+    
+    {% block errors %}
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Oh no!</strong> {{ error }}
+            </div>
+        {% endif %}
+    {% endblock %}
+    
+    {% block messages %}
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-success" role="alert">
+                <strong>Success!</strong> {{ message }}
+            </div>
+        {% endfor %}
+    {% endblock %}
+
+    {% block body %}
+    {% endblock %}
+</body>

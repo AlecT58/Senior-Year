@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Catering Co. | Schedule Events</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="../static/CSS/forms.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Catering Co.</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="customer_home">Home</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="logout">
+            <span class="glyphicon glyphicon-log-out"></span> Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Oh no!</strong> {{ error }}
+    </div>
+  {% endif %}
+
+  <div class="container">
+      <form class="form-signin" id='eventScheduleForm' name='eventScheduleForm' method="POST">
+        <h1 class="form-signin-heading">Please fill out the form to schedule an event</h1>
+        <label for="inputTitle" class="sr-only">Event Title</label>
+        <input type="text" id="inputTitle" name='title' class="form-control" placeholder="Event Title" required autofocus>
+        <label for="inputDate" class="sr-only">Date</label>
+        <input type="date" id="inputDate" name='date' class="form-control" placeholder="Date" required>
+        <!-- check if date is valid. possibly add datepicker to do this automatically -->
+        <button class="btn btn-lg btn-success btn-block" type="submit">Schedule Event</button>
+      </form>
+    </div>
+    <script type="text/javascript">
+      var today = new Date(),
+      minDate = today.toISOString().substring(0,10);
+      $('#inputDate').prop('min', minDate);
+    </script>
+</body>
+</html>

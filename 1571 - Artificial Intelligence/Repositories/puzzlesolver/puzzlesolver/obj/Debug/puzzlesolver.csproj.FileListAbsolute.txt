@@ -1,0 +1,7 @@
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\obj\Debug\puzzlesolver.csprojResolveAssemblyReference.cache
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\obj\Debug\puzzlesolver.csproj.CoreCompileInputs.cache
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\bin\Debug\puzzlesolver.exe.config
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\bin\Debug\puzzlesolver.exe
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\bin\Debug\puzzlesolver.pdb
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\obj\Debug\puzzlesolver.exe
+C:\Users\Alec\Documents\GitHub_Personal\Senior Year\1571\puzzlesolver\puzzlesolver\obj\Debug\puzzlesolver.pdb

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Catering Co. | Register New User</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="../static/CSS/forms.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Catering Co.</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="login">Return to Login</a>
+        </li>
+  </nav>
+
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Oh no!</strong> {{ error }}
+    </div>
+  {% endif %}
+
+  <div class="container">
+    <form class="form-signin" id='registerForm' name='registerForm' method="POST">
+      <h2 class="form-signin-heading">Please Enter Your Information</h2>
+      <label for="inputUserName" class="sr-only">Desired Username</label>
+      <input type="text" id="inputUserName" name="username" class="form-control" placeholder="Desired Username" maxlength='80' required autofocus>
+      <label for="inputPassword" class="sr-only">New Password</label>
+      <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" maxlength='80' required>
+      <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+    </form>
+  </div>
+</body>
+
+</html>

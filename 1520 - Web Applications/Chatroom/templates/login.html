@@ -1,0 +1,40 @@
+{% extends "base.html" %} 
+{% block title %}Login{% endblock %}
+
+<body>
+  {% block navbar %}
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand">Chatty Cathy</a>
+      </div>
+    </div>
+  </nav>
+  {% endblock %} 
+  
+  {% block messages %} {{ super() }} {% endblock %} 
+  {% block errors %} {{ super() }} {% endblock %}
+
+  {% block body %}
+  <div class="container">
+    <form class="form-signin" id='signInForm' name='signInForm' method="POST">
+      <h1 class="form-signin-heading">Welcome to Chatty Cathy!</h1>
+      <h2>Please Sign In</h2>
+      <label for="inputUserName" class="sr-only">Username</label>
+      <input type="text" id="inputUserName" name='username' class="form-control" placeholder="Username" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" name='password' class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-success btn-block" type="submit">Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block" type="button" id="btnRegister">Register New User</button>
+    </form>
+  </div>
+
+  <script type='text/javascript'>
+    document.getElementById('btnRegister').addEventListener('click', function() {
+      window.location.href = 'register';
+    });
+  </script>
+  {% endblock %}
+</body>
+
+</html>
