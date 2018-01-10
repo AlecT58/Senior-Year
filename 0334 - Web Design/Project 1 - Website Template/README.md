@@ -1,6 +1,6 @@
 # Project 1 for CS0334 Spring 2018 - Alec Trievel
 
-## Project Description and [Project Link](http://www.alectrievel.com/schoolwork/CS0334/project1.html)
+## Project Description and [Project Link](http://www.alectrievel.com/schoolwork/CS0334/project1/index.html)
 
 ### Download a website template that utilizes CSS to create a "Business-related" website (for example, "business & services", or "computing and apps" or "non-profit" or "accounting", etc.); make sure to
 
