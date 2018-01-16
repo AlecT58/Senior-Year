@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A Short PHP Story</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <style>
+        .center_div {
+            margin: 0 auto;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container center div">
+        <h1 class="text-center mt-2 mb-4">Fill out the form to create a short story!</h1>
+        <form method="GET" action="story.php" id="storyForm">
+            <div class="form-group">
+                <label for="properName">Proper Name</label>
+                <input type="text" name="proper_name" class="form-control" id='properName'>
+                <small class="form-text text-muted">Enter a proper name, such as 'Alec'.</small>
+            </div>
+            <div class="form-group">
+                <label for="adjectiveA">An Adjective</label>
+                <input type="text" name="adjective_a" class="form-control" id="adjectiveA">
+                <small class="form-text text-muted">Enter an adjective, such as 'merry'.</small>
+            </div>
+            <div class="form-group">
+                    <label for="adjectiveB">Another Adjective</label>
+                    <input type="text" name="adjective_b" class="form-control" id="adjectiveB">
+                    <small class="form-text text-muted">Enter another adjective, such as 'old'.</small>
+            </div>
+            <div class="form-group">
+                    <label for="noun">A Noun</label>
+                    <input type="text" name="noun" class="form-control" id="noun">
+                    <small class="form-text text-muted">Enter a noun, such as 'pipe'.</small>
+            </div>
+            <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" name="occupation" class="form-control" id="occupation">
+                    <small class="form-text text-muted">Enter an occupation, such as 'fiddler'.</small>
+            </div>
+            <div class="form-group">
+                    <label for="adjectiveB">Occupational Tool</label>
+                    <input type="text" name="occupation_tool" class="form-control">
+                    <small class="form-text text-muted">Enter a tool the above occupation would use, such as 'fiddle'.</small>
+            </div>
+            <div class="form-group">
+                    <label for="amount">Number</label>
+                    <input type="text" name="amount" class="form-control" id="amount">
+                    <small class="form-text text-muted">Enter a number, such as 'three or 3'.</small>
+            </div>
+            <div class="form-row text-center">
+                <div class="col-12">
+                    <input type="submit" class="btn btn-lg btn-primary">Submit Story</button>
+                </div>
+            </div>        
+    </div>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </form>
+</body>
+</html>
