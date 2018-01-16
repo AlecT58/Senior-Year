@@ -3,7 +3,8 @@ body {
 }
 
 a {
-	color: #9999cc;
+  color: #9999cc;
+  margin: 0px;
 }
 
 .grid-container {
@@ -13,11 +14,6 @@ a {
   grid-template-areas: 'header header header header header header' 
                        'left left main main right right' 
                        'lfooter lfooter footer footer rfooter rfooter';
-}
-
-.grid-container>div {
-  padding: 20px 0;
-  vertical-align: middle;
 }
 
 .item1 {
@@ -65,13 +61,18 @@ a {
   text-align: center;
 }
 
+.item1, .item2, .item3, .item4  {
+  padding: 20px 0;
+  vertical-align: middle;
+}
+
 .item5, .item6, .item7 {
   background-color: whitesmoke;
-  padding: 0;
 }
 
 .item2, .item3, .item4 {
   height: 300px;
+  margin-bottom: 0px;
 }
 
 div>.div-content {
