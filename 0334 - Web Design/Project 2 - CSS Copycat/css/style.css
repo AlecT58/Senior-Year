@@ -10,7 +10,7 @@ a {
 .grid-container {
   min-width: 600px !important;
   max-width: 40%;
-  margin: 0 30% 0 30%;
+  margin: 0 auto;
   display: grid;
   grid-template-areas: 'header header header header header header' 
                        'left left main main right right' 
