@@ -8,6 +8,7 @@ a {
 }
 
 .grid-container {
+  min-width: 600px !important;
   max-width: 40%;
   margin: 0 30% 0 30%;
   display: grid;
