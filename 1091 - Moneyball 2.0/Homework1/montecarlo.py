@@ -17,7 +17,7 @@ def calculate_arrival_time():
     return random.randint(0, 120) + 1
 
 def main():
-    print(run_monte_carlo(10000))
+    print(run_monte_carlo(100000))
 
 if __name__ == '__main__':
     main()
