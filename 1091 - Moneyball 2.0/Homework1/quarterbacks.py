@@ -1,7 +1,7 @@
 import bs4 as bs
 import urllib.request as req
 
-class Quaterback:
+class Quarterback:
     def __init__(self, name, reg_season_url, post_season_url):
         self.name = name
         self.reg_season_url = reg_season_url
