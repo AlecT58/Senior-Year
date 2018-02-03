@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Alec Trievel">
+    <meta name="author" content="Alec Trievel>
     <title>A Short PHP Story</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
@@ -29,8 +29,6 @@
             echo "<p class='text-center'>Oh there's none so rare as can compare</p>";
             echo "<p class='text-center'>With King <span class='font-weight-bold'>" . $proper_name . "</span> and his <span class='text-success'>" . $occupation . "</span> <span class='text-warning'>" . $amount . "</span>.</p>";
         ?>
-
-        <a class="btn btn-md btn-info" href="http://www.alectrievel.com/schoolwork/CS0334/project4/story.txt" download>Download PHP as Text</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
