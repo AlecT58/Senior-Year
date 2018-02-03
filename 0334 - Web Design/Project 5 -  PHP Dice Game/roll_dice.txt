@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="Alec Trievel">
+    <meta name="author" content="Alec Trievel>
     <title>A PHP Dice Game | Results</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="dice.css">
@@ -45,8 +45,6 @@
                 echo "<h3 class='display-3 text-success'>Congratulations, you win!</h3>";
             }
         ?>
-
-        <a class="btn btn-md btn-info mt-5" href="http://www.alectrievel.com/schoolwork/CS0334/project5/roll_dice.txt" download>Download PHP as Text</a>
     </div>
  
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
