@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A PHP Dice Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container center div">
+        <h1 class="text-center mt-2 mb-4">Fill out the form to play a dice game!</h1>
+        <div class="alert alert-danger" role="alert" style="display: none" id="errorTotal">
+            <strong>Oh no!</strong> Your total is either too large or too small. Please try again
+        </div>
+        <form method="GET" action="roll_dice.php" id="diceForm">
+            <div class="form-group">
+                <label for="ddlNumDice">Select the number of dice to roll</label>
+                <select class="form-control" name="num_dice" id="ddlNumDice">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="txtTotal">Enter your guess for the sum of the dice</label>
+                <input type="number" name="total_guess" class="form-control" id="txtTotal" min="1" max="30">
+            </div>
+            <div class="form-row text-center mb-5">
+                <div class="col-12">
+                    <input type="submit" class="btn btn-lg btn-primary" value="Roll Dice">
+                </div>
+            </div>   
+        </form>     
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $("#diceForm").submit(function(e) {
+            if(!assertTotal()) {
+                $('#errorTotal').css('display', 'block');
+                e.preventDefault();
+                e.stopImmediatePropagation();
+            }
+        });
+
+        function assertTotal() {
+            const user_guess = parseInt($('#txtTotal').val());
+            const max_value = parseInt($('#ddlNumDice').val()) * 6;
+            const min_value =  parseInt($('#ddlNumDice').val());
+
+            if(user_guess > max_value || user_guess < min_value) {
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>
