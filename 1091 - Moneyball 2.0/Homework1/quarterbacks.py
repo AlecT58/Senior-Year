@@ -37,8 +37,8 @@ class Quarterback:
             print("[Post Season] {} is better based on his career passer rating of: {}".format(other_qb.name, other_qb.post_season_rating))
 
 def main():
-    ben = Quaterback("Ben Roethlisberger", 'https://www.pro-football-reference.com/players/R/RoetBe00.htm', 'https://www.pro-football-reference.com/players/R/RoetBe00/gamelog/post/')
-    terry = Quaterback("Terry Bradshaw", 'https://www.pro-football-reference.com/players/B/BradTe00.htm', 'https://www.pro-football-reference.com/players/B/BradTe00/gamelog/post/')
+    ben = Quarterback("Ben Roethlisberger", 'https://www.pro-football-reference.com/players/R/RoetBe00.htm', 'https://www.pro-football-reference.com/players/R/RoetBe00/gamelog/post/')
+    terry = Quarterback("Terry Bradshaw", 'https://www.pro-football-reference.com/players/B/BradTe00.htm', 'https://www.pro-football-reference.com/players/B/BradTe00/gamelog/post/')
 
     ben.compare_passer_ratings(terry)
 
