@@ -1,4 +1,4 @@
-# Project  for CS0334 Spring 2018 - Alec Trievel
+# Project 5 for CS0334 Spring 2018 - Alec Trievel
 
 ## Project Description and [Project Link](http://www.alectrievel.com/schoolwork/CS0334/project5/index.html)
 
