@@ -9,11 +9,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
-    <div class="text-center">
+    <div class="container text-center">
     <h2 class='display-3'>"GoPitt" Fizzbuzz</h2>
     <a class="btn btn-md btn-info my-3" href="http://www.alectrievel.com/schoolwork/CS0334/project6/modified_fizzbuzz.txt" download>Download PHP as Text</a>
     <br>
     <?php
+        /* loop 100 times
+        *  if evenly divisable by 3, mark as 'fizzy'
+        *  if evenly divisable by 3, mark as 'buzzy'
+        *  if fizzy and buzzy, print 'GoPitt'
+        *  if only fizzy, print 'Go'
+        *  if only buzzy, print 'Pitt'
+        *  else print the index of the loop
+        */
+        
         for ($i = 1; $i <= 100; $i++)
         {
             $fizzy = (bool)($i % 3 == 0);
