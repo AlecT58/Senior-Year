@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Guestbook</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark text-white">
+    <div class="container">
+        <h1 class="display-4 text-center">Sign into the Guestbook</h1>
+        <form method="POST" action="logGuest.php" class="mb-3" name="guestbook" id="guestbook">
+            <div class="form-group">
+                <label for="txtFirstName" class="form-label">Your first name</label>
+                <input type="text" class="form-control" name="first_name" id="txtFirstName" required>
+            </div>
+            <div class="form-group">
+                <label for="txtLastName" class="form-label">Your last name</label>
+                <input type="text" class="form-control" name="last_name" id="txtLastName" required>
+            </div>
+            <div class="form-group">
+                <label for="txtAddress" class="form-label">Your address</label>
+                <input type="text" class="form-control" name="address" id="txtAddress">
+            </div>
+            <div class="form-group">
+                <label for="txtSchool" class="form-label">Your current school</label>
+                <input type="text" class="form-control" name="school" id="txtSchool" placeholder="Or your most recent school" required>
+            </div>
+            <div class="form-group">
+                <label for="txtEmail" class="form-label">Your email address</label>
+                <input type="email" class="form-control" name="email" id="txtEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="txtPhone" class="form-label">Your phone number</label>
+                <input type="tel" class="form-control" name="phone" id="txtPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="txtBirthday" class="form-label">Your birthday</label>
+                <input type="date" class="form-control" name="birthday" id="txtBirthday" required>
+            </div>
+            <div class="form-group">
+                <label for="txtColor" class="form-label">Your favorite color</label>
+                <input type="text" class="form-control" name="color" id="txtColor" required>
+            </div>
+            <div class="form-group">
+                <label for="txtComment" class="form-label">A comment</label>
+                <textarea class="form-control" name="comment" id="txtComment" required></textarea>
+            </div>
+            <div class="row">
+                <div class="col-6 text-left">
+                    <input type="submit" class="btn btn-lg btn-primary" value="Submit Form">
+                </div>
+                <div class="col-6 text-right">
+                    <input type="button" class="btn btn-lg btn-info mb-3" value="View PHP Source">
+                </div>
+            </div>
+            <div class="alert alert-success" role="alert" id="success" style="display:none">
+                <strong>Great!</strong> Your information was added to the guestbook
+            </div>
+            <div class="alert alert-danger" role="alert" id="error" style="display:none">
+                <strong>On no!</strong> Something went wrong. Please try submitting again
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('form[name=guestbook]').submit(function(e) {
+                e.preventDefault();
+
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize()
+            })
+            .always(function (data, textStatus) {
+                if (textStatus !== 'success') {
+                    $('#error').css('display', 'block');
+                }
+                else {
+                    console.log(JSON.stringify(JSON.parse(data), null, 2));
+                    $('#error').css('display', 'none');
+                    $('#success').css('display', 'block');
+                    $('#guestbook')[0].reset();      
+
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
