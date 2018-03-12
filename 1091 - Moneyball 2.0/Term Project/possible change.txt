@@ -1,0 +1,2 @@
+reg season: multiple regression based on GAA and GFA, compare to points
+post season: winner of each round, was offense or defense better based on league average?
