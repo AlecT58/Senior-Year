@@ -8,10 +8,11 @@
                              trim(stripslashes($_POST['birthday'])), trim(stripslashes($_POST['color'])), trim(stripslashes($_POST['comment']))
         );
 
-        $csv =  generateCSV($guest_data);
-        echo $csv;
+        $csv = generateCSV($guest_data);
+        echo $csv; //return to AJAX
     }
 
+    //generate a csv file for each entry and return the latest entry as JSON
     function generateCSV($data, $delimiter = ',', $enclosure = '"', $escape_char = "\n") {
         $handle = fopen('guests.mas', 'a+');
         fputcsv($handle, $data, $delimiter, $enclosure);
@@ -25,6 +26,6 @@
         fclose($handle);
 
         array_pop($json_list);
-        return json_encode($json_list);
+        return json_encode(array_pop($json_list));
     }
 ?>

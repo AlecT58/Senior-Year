@@ -51,16 +51,16 @@
                 <textarea class="form-control" name="comment" id="txtComment" required></textarea>
             </div>
             <div class="row">
-                <div class="col-3">
+                <div class="col-sm-3 text-left mb-3">
                     <input type="submit" class="btn btn-lg btn-primary" value="Submit Form">
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3 text-center mb-3">
                     <a href="logGuest.txt" class="btn btn-lg btn-info">View PHP Source</a>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3 text-center mb-3">
                     <a href="guests.mas" class="btn btn-lg btn-info mb-3">View .mas File</a>
                 </div>
-                <div class="col-3">
+                <div class="col-sm-3 text-right mb-3">
                     <a href="guestbook.txt" class="btn btn-lg btn-info mb-3">View HTML Source</a>
                 </div>
             </div>
@@ -71,6 +71,18 @@
                 <strong>On no!</strong> Something went wrong. Please try submitting again
             </div>
         </form>
+        <div class="jumbotron text-muted" id="newestEntry" style="display:none">
+            <h2>New Guest Information</h4>
+            <h4>First Name: <span id="newFirstName"></span></h4>
+            <h4>Last Name: <span id="newLastName"></span></h4>
+            <h4>Address: <span id="newAddress"></span></h4>
+            <h4>School: <span id="newSchool"></span></h4>
+            <h4>Email: <span id="newEmail"></span></h4>
+            <h4>Phone: <span id="newPhone"></span></h4>
+            <h4>Birthday: <span id="newBirthday"></span></h4>
+            <h4>Color: <span id="newColor"></span></h4>
+            <h4>Comment: <span id="newComment"></span></h4>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
@@ -91,11 +103,25 @@
                     $('#error').css('display', 'block');
                 }
                 else {
-                    console.log(JSON.stringify(JSON.parse(data), null, 2));
+                    const data_parsed = JSON.parse(data).replace(/['"\[\]]+/g, '').split(",");
+                    console.log(data_parsed);
+                    
                     $('#error').css('display', 'none');
                     $('#success').css('display', 'block');
-                    $('#guestbook')[0].reset();      
+                    $('#guestbook')[0].reset();     
 
+                    $('#newFirstName').text(data_parsed[0]);
+                    $('#newLastName').text(data_parsed[1]);
+                    $('#newAddress').text(data_parsed[2]);
+                    $('#newSchool').text(data_parsed[3]);
+                    $('#newEmail').text(data_parsed[4]);
+                    $('#newPhone').text(data_parsed[5]);
+                    $('#newBirthday').text(data_parsed[6]);
+                    $('#newColor').text(data_parsed[7]);
+                    $('#newComment').text(data_parsed[8]);
+
+                    $('#newestEntry').css('display', 'block');
+                    $(window).scrollTop($('#newestEntry').offset().top);
                 }
             });
         });
