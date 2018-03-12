@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta author="Alec Trievel">
     <title>Guestbook</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -50,11 +51,17 @@
                 <textarea class="form-control" name="comment" id="txtComment" required></textarea>
             </div>
             <div class="row">
-                <div class="col-6 text-left">
+                <div class="col-3">
                     <input type="submit" class="btn btn-lg btn-primary" value="Submit Form">
                 </div>
-                <div class="col-6 text-right">
-                    <input type="button" class="btn btn-lg btn-info mb-3" value="View PHP Source">
+                <div class="col-3">
+                    <a href="logGuest.txt" class="btn btn-lg btn-info">View PHP Source</a>
+                </div>
+                <div class="col-3">
+                    <a href="guests.mas" class="btn btn-lg btn-info mb-3">View .mas File</a>
+                </div>
+                <div class="col-3">
+                    <a href="guestbook.txt" class="btn btn-lg btn-info mb-3">View HTML Source</a>
                 </div>
             </div>
             <div class="alert alert-success" role="alert" id="success" style="display:none">
