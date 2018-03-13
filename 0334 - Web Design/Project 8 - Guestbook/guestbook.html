@@ -104,8 +104,7 @@
                 }
                 else {
                     const data_parsed = JSON.parse(data).replace(/['"\[\]]+/g, '').split(",");
-                    console.log(data_parsed);
-                    
+                                        
                     $('#error').css('display', 'none');
                     $('#success').css('display', 'block');
                     $('#guestbook')[0].reset();     

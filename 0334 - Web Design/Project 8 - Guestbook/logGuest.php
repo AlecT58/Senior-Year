@@ -3,16 +3,23 @@
     
     if(isset($_POST)) {
         //get the data from the user and store in array
-        $guest_data = Array (trim(stripslashes($_POST['first_name'])), trim(stripslashes($_POST['last_name'])), trim(stripslashes($_POST['address'])),
-                             trim(stripslashes($_POST['school'])), trim(stripslashes($_POST['email'])), trim(stripslashes($_POST['phone'])),
-                             trim(stripslashes($_POST['birthday'])), trim(stripslashes($_POST['color'])), trim(stripslashes($_POST['comment']))
+        $guest_data = Array (
+            trim(str_replace(",", "", stripslashes($_POST['first_name']))), 
+            trim(str_replace(",", "", stripslashes($_POST['last_name']))), 
+            trim(str_replace(",", "", stripslashes($_POST['address']))), 
+            trim(str_replace(",", "", stripslashes($_POST['school']))), 
+            trim(str_replace(",", "", stripslashes($_POST['email']))), 
+            trim(str_replace(",", "", stripslashes($_POST['phone']))),
+            trim(str_replace(",", "", stripslashes($_POST['birthday']))), 
+            trim(str_replace(",", "", stripslashes($_POST['color']))), 
+            trim(str_replace(",", "", stripslashes($_POST['comment'])))
         );
 
         $csv = generateCSV($guest_data);
         echo $csv; //return to AJAX
     }
 
-    //generate a csv file for each entry and return the latest entry as JSON
+    //generate a csv line for each entry, write to file, and return the latest entry as JSON
     function generateCSV($data, $delimiter = ',', $enclosure = '"', $escape_char = "\n") {
         $handle = fopen('guests.mas', 'a+');
         fputcsv($handle, $data, $delimiter, $enclosure);
