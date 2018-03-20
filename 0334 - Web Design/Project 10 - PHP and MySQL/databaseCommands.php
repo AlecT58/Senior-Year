@@ -51,33 +51,45 @@
         // }
         echo $json_array_parsed;
     }
-   
-    //used to add a new customer in the database
-    // if(isset($_POST)) {
-    //     $query = $conn->prepare("INSERT INTO Customer VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-    //     $query->bind_param("sssssssssssss", null, $_POST["password"], $_POST["first_name"], $_POST["last_name"], $_POST["first_name"],
-    //                                               $_POST["address_1"], $_POST["address_2"], $_POST["city"], $_POST["state"],
-    //                                               $_POST["zip_code"], $_POST["country"], $_POST["email"], $_POST["home_phone"], $_POST["cell_phone"]
-    //                         );
-    //     $query->execute();
-    // }
 
     //used to update a customer in the database
-    // if(isset($_PUT)) {
-    //     $query = $conn->prepare("UPDATE Customer SET first_name=?, last_name=?, address_1=?, address_2=?, city=?, 'state'=?, zip_code=?,
-    //                                                  country=?, email=?, home_phone=?, cell_phone=? WHERE user_id=?
-    //                             ");
-    //     $query->bind_param("ssssssssssss", $_PUT["first_name"], $_PUT["last_name"], $_PUT["address_1"], $_PUT["address_2"], $_PUT["city"], 
-    //                                        $_PUT["state"], $_PUT["zip_code"], $_PUT["country"], $_PUT["email"], $_PUT["home_phone"], 
-    //                                        $_PUT["cell_phone"], $_PUT["user_id"]
-    //                         );
-    //     if ($conn->query($query) === TRUE) {
-    //         echo "{'updated': true}";
-    //     }
-    //     else {
-    //         echo "{'updated': true}";
-    //     }
-    // }
+    if(isset($_POST)) {
+        $id = $_POST["user_id"];
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $address_1 = $_POST["address_1"];
+        $address_2 = $_POST["address_2"];
+        $city = $_POST["city"];
+        $state = $_POST["state"];
+        $zip_code = $_POST["zip_code"];
+        $country = $_POST["country"];
+        $email = $_POST["email"];
+        $home_phone = $_POST["home_phone"];
+        $cell_phone = $_POST["cell_phone"];
+        $password = $_POST["password"];
+        $type = $_POST["type"];
+
+        if($type === "PUT") {
+            $query = "UPDATE Customer SET first_name='$first_name', last_name='$last_name', address_1='$address_1', 
+                                          address_2='$address_2', city='$city', `state`='$state', zip_code='$zip_code', country='$country', 
+                                          email='$email', home_phone='$home_phone', cell_phone='$cell_phone' WHERE user_id='$id'";
+            
+            if ($conn->query($query) === TRUE) {
+                echo "{'updated': 'true'}";
+            }
+            else {
+                echo "{'updated': 'false'}";
+            }
+        }
+        elseif ($type === "POST") {
+            $query = $conn->prepare("INSERT INTO Customer VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?");
+            $query->bind_param("sssssssssssss", null, $password, $first_name, $last_name, $address_1, $address_2, $city, $state, $zip_code,
+                                                $country, $email, $home_phone, $cell_phone);
+            $query->execute();
+            $query->close();
+            echo "{'inserted': 'true'}";
+        }
+    }
 
     //close the database connection after the method is complete
     $conn->close();

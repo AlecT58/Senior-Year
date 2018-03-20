@@ -1,8 +1,7 @@
-function createOrUpdateCustomer(customer_as_json, method) {
+function createOrUpdateCustomer(customer_as_json) {
     $.ajax({
         url: "http://www.alectrievel.com/schoolwork/CS0334/project10/databaseCommands.php",
-        type: method,
-        contentType: "applcation/json; charset=utf-8",
+        type: 'POST',
         dataType: "applcation/json; charset=utf-8",
         data: customer_as_json
     })
@@ -11,8 +10,15 @@ function createOrUpdateCustomer(customer_as_json, method) {
             //error
         }
         else {
-            //swal success
-            //add to table
+            if(data.responseText.contains("{'updated': 'true'}")) {
+                alert('Customer information was updated');
+            }
+            else if(data.responseText.contains("{'inserted': 'true'}")) {
+                alert('New customer was added');
+            }
+            else {
+                alert('There was an error submitting your request');
+            }
         }
     });
 }

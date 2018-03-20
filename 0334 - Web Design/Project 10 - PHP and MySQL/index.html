@@ -63,6 +63,7 @@
 
             $('#btnAddNewCustomer').on('click touch', function () {  
                 const new_customer = {
+                    user_id: -1,
                     first_name: $('#txtNewFirstName').val(),
                     last_name: $('#txtNewLastName').val(),
                     address_1: $('#txtNewAddress1').val(),
@@ -74,10 +75,11 @@
                     email: $('#txtNewEmail').val(),
                     home_phone: $('#txtNewHomePhone').val(),
                     cell_phone: $('#txtNewCellPhone').val(),
-                    password: prompt("Please enter ypur new password", "super_secret")
+                    password: prompt("Please enter ypur new password", "super_secret"),
+                    type: "POST"
                 };
 
-                createOrUpdateCustomer(new_customer, 'POST');
+                createOrUpdateCustomer(new_customer);
                 updateTable(new_customer);
 
                 $('#txtNewFirstName').val('');
@@ -86,36 +88,36 @@
                 $('#txtNewAddress2').val('');
                 $('#txtNewCity').val('');
                 $('#txtNewState').val('');
-                $('#txtZip').val('');
-                $('#txtCountry').val('');
-                $('#txtEmail').val('');
+                $('#txtNewZip').val('');
+                $('#txtNewCountry').val('');
+                $('#txtNewEmail').val('');
                 $('#txtNewHomePhone').val('');
                 $('#txtNewCellPhone').val('');
 
                 alert('New customer was added to the database');
             });
-
-            function updateCustomer(button) {
-                const id = button.id.replace('btnUpdate', '');
-                const updated_customer = {
-                    user_id: id,
-                    first_name: $('#txtFirstName'+id).val(),
-                    last_name: $('#txtLastName'+id).val(),
-                    address_1: $('#txt1Address'+id).val(),
-                    address_2: $('#txt2Address'+id).val(),
-                    city: $('#txtCity'+id).val(),
-                    state: $('#txtState'+id).val(),
-                    zip_code: $('#txtZip'+id).val(),
-                    country: $('#txtCountry'+id).val(),
-                    email: $('#txtEmail'+id).val(),
-                    home_phone: $('#txtHomePhone'+id).val(),
-                    cell_phone: $('#txtCellPhone'+id).val()
-                };
-
-                createOrUpdateCustomer(updated_customer, 'PUT');
-
-                alert('Customer information was updated');
-            }
         });
+
+        function updateCustomer(button) {
+            const id = button.id.replace('btnUpdate', '');
+            const updated_customer = {
+                user_id: id,
+                password: "",
+                first_name: $('#txtFirstName'+id).val(),
+                last_name: $('#txtLastName'+id).val(),
+                address_1: $('#txt1Address'+id).val(),
+                address_2: $('#txt2Address'+id).val(),
+                city: $('#txtCity'+id).val(),
+                state: $('#txtState'+id).val(),
+                zip_code: $('#txtZip'+id).val(),
+                country: $('#txtCountry'+id).val(),
+                email: $('#txtEmail'+id).val(),
+                home_phone: $('#txtHomePhone'+id).val(),
+                cell_phone: $('#txtCellPhone'+id).val(),
+                type: "PUT"
+            };
+
+            createOrUpdateCustomer(updated_customer);
+        }
     </script>
 </body>
