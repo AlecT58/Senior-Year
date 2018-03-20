@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta author="Alec Trievel">
+    <title>Customer Listings</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+    <div class="container-fluid">
+        <div class="container text-center">
+            <h3 class='display-3 text-white'>Customer Database</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-stripped table-hover table-bordered table-dark" id="tblCustomers">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address 1</th>
+                        <th>Address 2</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>ZIP</th>
+                        <th>Country</th>
+                        <th>Email</th>
+                        <th>Home Phone</th>
+                        <th>Cell Phone</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td class='text-center'><input type='text' id='txtNewFirstName' class='form-control'></td>
+                        <td class='text-center'><input type='text' id='txtNewLastName' class='form-control'></td>
+                        <td class='text-center'><input type='text' id='txtNewAddress1' class='form-control'></td>
+                        <td class='text-center'><input type='text' id='txtNewAddress2' class='form-control'></td>
+                        <td class='text-center'><input type='text' id='txtNewCity' class='form-control'></td>
+                        <td class='text-center'><input type='text' id='txtNewState' class='form-control'></td>
+                        <td class='text-center'><input type='number' id='txtNewZip' class='form-control'></td>
+                        <td class='text-center'><input type='text' id='txtNewCountry' class='form-control'></td>
+                        <td class='text-center'><input type='email' id='txtNewEmail' class='form-control'></td>
+                        <td class='text-center'><input type='number' id='txtNewHomePhone' class='form-control'></td>
+                        <td class='text-center'><input type='number' id='txtNewCellPhone' class='form-control'></td>
+                        <td class='text-center'><input type='button' id='btnAddNewCustomer' class='btn btn-success' value="Add Customer"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="customer.js"></script>
+    <script type="text/javascript">    
+        $(document).ready(function() {
+            getCustomerData();
+
+            $('#btnAddNewCustomer').on('click touch', function () {  
+                const new_customer = {
+                    first_name: $('#txtNewFirstName').val(),
+                    last_name: $('#txtNewLastName').val(),
+                    address_1: $('#txtNewAddress1').val(),
+                    address_2: $('#txtNewAddress2').val(),
+                    city: $('#txtNewCity').val(),
+                    state: $('#txtNewState').val(),
+                    zip_code: $('#txtNewZip').val(),
+                    country: $('#txtNewCountry').val(),
+                    email: $('#txtNewEmail').val(),
+                    home_phone: $('#txtNewHomePhone').val(),
+                    cell_phone: $('#txtNewCellPhone').val(),
+                    password: prompt("Please enter ypur new password", "super_secret")
+                };
+
+                createOrUpdateCustomer(new_customer, 'POST');
+                updateTable(new_customer);
+
+                $('#txtNewFirstName').val('');
+                $('#txtNewLastName').val('');
+                $('#txtNewAddress1').val('');
+                $('#txtNewAddress2').val('');
+                $('#txtNewCity').val('');
+                $('#txtNewState').val('');
+                $('#txtZip').val('');
+                $('#txtCountry').val('');
+                $('#txtEmail').val('');
+                $('#txtNewHomePhone').val('');
+                $('#txtNewCellPhone').val('');
+
+                alert('New customer was added to the database');
+            });
+
+            function updateCustomer(button) {
+                const id = button.id.replace('btnUpdate', '');
+                const updated_customer = {
+                    user_id: id,
+                    first_name: $('#txtFirstName'+id).val(),
+                    last_name: $('#txtLastName'+id).val(),
+                    address_1: $('#txt1Address'+id).val(),
+                    address_2: $('#txt2Address'+id).val(),
+                    city: $('#txtCity'+id).val(),
+                    state: $('#txtState'+id).val(),
+                    zip_code: $('#txtZip'+id).val(),
+                    country: $('#txtCountry'+id).val(),
+                    email: $('#txtEmail'+id).val(),
+                    home_phone: $('#txtHomePhone'+id).val(),
+                    cell_phone: $('#txtCellPhone'+id).val()
+                };
+
+                createOrUpdateCustomer(updated_customer, 'PUT');
+
+                alert('Customer information was updated');
+            }
+        });
+    </script>
+</body>
