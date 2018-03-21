@@ -45,14 +45,10 @@
         }
 
         $json_array_parsed = json_encode($json);
-
-        // foreach($json as $value) {
-        //     echo $value;
-        // }
         echo $json_array_parsed;
     }
 
-    //used to update a customer in the database
+    //used to update or insert a customer in the database
     if(isset($_POST)) {
         $id = $_POST["user_id"];
         $first_name = $_POST["first_name"];
@@ -67,8 +63,7 @@
         $home_phone = $_POST["home_phone"];
         $cell_phone = $_POST["cell_phone"];
         $password = $_POST["password"];
-        $type = $_POST["type"];
-
+        $type = $_POST["type"];     //determine whether to insert or update 
 
         if($type === "PUT") {
             $query = "UPDATE Customer SET first_name='$first_name', last_name='$last_name', address_1='$address_1', 

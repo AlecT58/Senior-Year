@@ -1,3 +1,4 @@
+//execute pseudo-PUT for update or POST for insert
 function createOrUpdateCustomer(customer_as_json) {
     $.ajax({
         url: "http://www.alectrievel.com/schoolwork/CS0334/project10/databaseCommands.php",
@@ -20,6 +21,7 @@ function createOrUpdateCustomer(customer_as_json) {
     });
 }
 
+//get all the customers from the database
 function getCustomerData() {
     $.ajax({
         url: "http://www.alectrievel.com/schoolwork/CS0334/project10/databaseCommands.php",
@@ -28,16 +30,16 @@ function getCustomerData() {
     })
     .always(function (data, textStatus) {
         if (textStatus !== 'success') {
-            //swal error
+            //error
         }
         else {
-            //swal success
-            //add to table
+            //add each JSON row to the table
             JSON.parse(data).forEach(element => updateTable(JSON.parse(element)));
         }
     });
 }
 
+//insert the given JSON string into the table
 function updateTable(customer_json) {
     $('#tblCustomers tbody').append("<tr><td><input type='text' id='txtFirstName" + customer_json.id + "' class='form-control' value='" + customer_json.first_name + "'>" + 
                                     "<td><input type='text' id='txtLastName" + customer_json.id + "' class='form-control' value='" + customer_json.last_name + "'>" +

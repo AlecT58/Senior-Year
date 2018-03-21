@@ -59,8 +59,10 @@
     <script src="customer.js"></script>
     <script type="text/javascript">    
         $(document).ready(function() {
+            //load the users into the table
             getCustomerData();
 
+            //add new customer and clear the "form"
             $('#btnAddNewCustomer').on('click touch', function () {  
                 const new_customer = {
                     user_id: null,
@@ -96,6 +98,7 @@
             });
         });
 
+        //update the currently selected row
         function updateCustomer(button) {
             const id = button.id.replace('btnUpdate', '');
             const updated_customer = {

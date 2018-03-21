@@ -36,16 +36,21 @@
                 $dbname = "alect58_Lab9";
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
+                //get the form variables
                 $first_name = $_POST["fname"];
                 $last_name = $_POST["lname"];
 
+                //prepare the query to help prevent SQL injections
                 if ($stmt = $conn->prepare("SELECT * FROM Customer WHERE first_name=? AND last_name=?")) {
                     $stmt->bind_param("ss", $first_name, $last_name);
+
+                    //execute the query and store the resulting rows in variables
                     $stmt->execute();
                     $stmt->bind_result($user_id, $password, $first_name, $last_name, $address_1, $address_2, $city, $state, $zip, $country, $email, $home_phone, $cell_phone);
                     $stmt->fetch();      
-                    $stmt->close();
-
+                    
+                    //if nothing was returned, tell the user nothing was found
+                    //else, show the resulting rows
                     if($user_id == null) {
                         echo "<div class='alert alert-info'><strong>Note: </strong>No information was found for that name</div>";
                     }
@@ -59,6 +64,8 @@
                     }
                 }
 
+                //close the open connections to the database
+                $stmt->close();
                 $conn->close();
             }
         ?>
