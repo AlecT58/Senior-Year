@@ -13,11 +13,8 @@ function createOrUpdateCustomer(customer_as_json) {
             if(data.responseText.contains("{'updated': 'true'}")) {
                 alert('Customer information was updated');
             }
-            else if(data.responseText.contains("{'inserted': 'true'}")) {
-                alert('New customer was added');
-            }
             else {
-                alert('There was an error submitting your request');
+                alert('New customer was added');
             }
         }
     });

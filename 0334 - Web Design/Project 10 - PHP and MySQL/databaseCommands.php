@@ -69,6 +69,7 @@
         $password = $_POST["password"];
         $type = $_POST["type"];
 
+
         if($type === "PUT") {
             $query = "UPDATE Customer SET first_name='$first_name', last_name='$last_name', address_1='$address_1', 
                                           address_2='$address_2', city='$city', `state`='$state', zip_code='$zip_code', country='$country', 
@@ -82,8 +83,9 @@
             }
         }
         elseif ($type === "POST") {
-            $query = $conn->prepare("INSERT INTO Customer VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?");
-            $query->bind_param("sssssssssssss", null, $password, $first_name, $last_name, $address_1, $address_2, $city, $state, $zip_code,
+            $query = $conn->prepare("INSERT INTO Customer (`user_id`, `user_password`, `first_name`, `last_name`, `address_1`, `address_2`, `city`, 
+                                    `state`, `zip_code`, `country`, `email`, `home_phone`, `cell_phone`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $query->bind_param("sssssssssssss", $id, $password, $first_name, $last_name, $address_1, $address_2, $city, $state, $zip_code,
                                                 $country, $email, $home_phone, $cell_phone);
             $query->execute();
             $query->close();
