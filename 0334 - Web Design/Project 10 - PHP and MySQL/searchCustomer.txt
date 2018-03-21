@@ -1,0 +1,42 @@
+        <?php
+            if(isset($_POST['submit'])) {
+                //set up the database connection
+                $servername = "localhost";
+                $username = "alect58_alect58";
+                $password = "@lecDatabase@5649";
+                $dbname = "alect58_Lab9";
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                //get the form variables
+                $first_name = $_POST["fname"];
+                $last_name = $_POST["lname"];
+
+                //prepare the query to help prevent SQL injections
+                if ($stmt = $conn->prepare("SELECT * FROM Customer WHERE first_name=? AND last_name=?")) {
+                    $stmt->bind_param("ss", $first_name, $last_name);
+
+                    //execute the query and store the resulting rows in variables
+                    $stmt->execute();
+                    $stmt->bind_result($user_id, $password, $first_name, $last_name, $address_1, $address_2, $city, $state, $zip, $country, $email, $home_phone, $cell_phone);
+                    $stmt->fetch();      
+                    
+                    //if nothing was returned, tell the user nothing was found
+                    //else, show the resulting rows
+                    if($user_id == null) {
+                        echo "<div class='alert alert-info'><strong>Note: </strong>No information was found for that name</div>";
+                    }
+                    else {
+                        echo "<div class='alert alert-info'><h4 class='alert-heading'>Here's the information we found about $first_name $last_name:</h4>
+                                <div class='row'><div class='col-md-8 mb-2'><strong>Address: </strong>$address_1 $address_2, $city, $state, $country</div></div>
+                                <div class='row'><div class='col-md-8 mb-2'><strong>Email: </strong>$email</div></div>
+                                <div class='row'><div class='col-md-8 mb-2'><strong>Home Phone: </strong>$home_phone</div></div>
+                                <div class='row'><div class='col-md-8 mb-2'><strong>Cell Phone: </strong>$cell_phone</div></div>
+                              </div>";
+                    }
+                }
+
+                //close the open connections to the database
+                $stmt->close();
+                $conn->close();
+            }
+        ?>
