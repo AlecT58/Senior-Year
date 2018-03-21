@@ -11,6 +11,9 @@
 </head>
 <body class=bg-dark>
     <div class="container">
+        <div class='text-right'>
+            <a href='searchCustomer.txt' class='btn btn-lg mt-2'>Download PHP Source</a>
+        </div>
         <div class="jumbotron text-center my-5">
             <h3 class="display-3">Search for a Customer</h3>
             <form method="POST">
