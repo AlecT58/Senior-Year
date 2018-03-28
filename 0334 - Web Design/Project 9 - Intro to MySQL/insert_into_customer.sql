@@ -8,3 +8,8 @@ INSERT INTO Customer VALUES (NULL, '412dsds', 'eloi', 'quick', '654 bluebird ave
 INSERT INTO Customer VALUES (NULL, '77979dasd', 'kumar', 'altamura', '793 rose lane', 'room 88', 'honolulu', 'hi', '96795', 'United States', 'ka@pitt.edu', '789789789', '789852963');
 INSERT INTO Customer VALUES (NULL, 'asda799', 'leon', 'banerjee', '1234 ruby road', 'appartment 12', 'buffalo', 'ny', '14201', 'United States', 'lb@pitt.edu', '456123456', '456789456');
 INSERT INTO Customer VALUES (NULL, 'dasdqe97', 'brandon', 'donne', '79 hope avenue', 'suite 2', 'plano', 'tx', '75023', 'United States', 'bd@pitt.edu', '794613312', '741258936');
+/*New inserts*/
+INSERT INTO Salesperson VALUES (NULL, 'joe', 'cool', '5555 fifth avenue', 'suite 2', 'plano', 'tx', '75023', 'United States', 'jc@pitt.edu', '78965412000', '12374196385', 'facebook.com/joe');
+INSERT INTO Salesperson VALUES (NULL, 'george', 'jefferson', '1234 fourth avenue', 'apartment 5', 'pittsburgh', 'pa', '15213', 'United States', 'gj@pitt.edu', '78965412000', '12374196385', 'facebook.com/george');
+INSERT INTO Salesperson VALUES (NULL, 'bob', 'ross', '7851 fifth avenue', '', 'pittsburgh', 'pa', '15219', 'United States', 'br@pitt.edu', '32132132100', '000005647892', 'facebook.com/bob');
+INSERT INTO Salesperson VALUES (NULL, 'rob', 'blob', '2222 sixth avenue', 'floor 8', 'pittsburgh', 'pa', '15217', 'United States', 'rb@pitt.edu', '78900078900', '8675309101', 'facebook.com/rob');
