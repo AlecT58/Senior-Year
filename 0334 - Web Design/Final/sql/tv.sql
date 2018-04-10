@@ -1,0 +1,7 @@
+CREATE TABLE TV (
+   	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    show_name VARCHAR(255) NOT NULL,
+    episode VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL,
+    price DECIMAL(15,2)      
+)
