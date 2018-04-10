@@ -1,0 +1,139 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>TV</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link href="css/loader.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+        <div class="item item-4"></div>
+    </div>
+
+    <!-- Main content -->
+    <div id="wrapper" style="display: none">
+
+        <!-- Header -->
+        <header id="header">
+            <a href="index.html" class="logo"><strong>uTunes</strong><span> - Think Differently</span></a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="tv.html">TV</a></li>
+                <li><a href="movies.html">Movies</a></li>
+                <li id="btnViewCart"><a href="cart.html">My Cart</a></li>
+            </ul>
+            <ul class="actions vertical">
+                <li id="btnRegister"><a href="register.html" class="button fit">Register</a></li>
+                <li id="btnLogin"><a href="login.html" class="button fit">Login</a></li>             
+                <li id="btnLogout"><a href="logout.html" class="button fit">Log Out</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+            <section id="one">
+                <div class="inner">
+                    <h1>TV Search</h1>
+                    <hr />
+                    <div class="row uniform">
+                        <div class="6u 12u$(xsmall)">
+                            <input type="text" id="txtSearchTerm" placeholder="Search Term" style="height:60px;"/>
+                        </div>
+                        <div class="6u 12u$(xsmall)">
+                            <select id="ddlSearchType">
+                                <option value="-1">Select Search Term Type...</option>
+                                <option value="descriptionTerm">Description</option>
+                                <option value="tvEpisodeTerm">Episode Name</option>
+                                <option value="showTerm">Show Name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row uniform">
+                        <div class="12u$">
+                            <input type="submit" id='btnSearch' value="Run Search" class="special" />
+                        </div>
+                    </div>
+                    <hr />
+
+                    <table id="tblTV" class="" style="display:none">
+                        <thead>
+                            <tr>
+                                <th>Episode Name</th>
+                                <th>Show/Season</th>
+                                <th>Genre</th>
+                                <th>Price</th>
+                                <th>Preview</th>
+                                <th>Add to Cart</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="copyright">
+                    <li>Designed by: <a href="http://www.alectrievel.com">Alec Trievel</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.scrolly.min.js"></script>
+    <script src="js/jquery.scrollex.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+        $(document).ready(function () {
+            if (isLoggedIn()) {
+                $('#btnLogin').toggle();
+                $('#btnRegister').toggle();
+            }
+            else {
+                $('#btnViewCart').toggle();
+                $('#btnLogout').toggle();
+            }
+
+            setTimeout(function () {
+                $('#loader').fadeOut(250);
+                $('#wrapper').fadeIn(250);
+            }, 2500);
+        });
+
+        $('#btnSearch').on('click touch', function (e) {
+            toggleLoader();
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            
+            setTimeout(function () {
+                search('tvShow', $('#txtSearchTerm').val(), "tvEpisode", $('#ddlSearchType').val(), $('#tblTV'));
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
