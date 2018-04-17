@@ -77,15 +77,18 @@ function saveItemToDatabase(item, type) {
 
     console.log(to_send);
 
-    //$.ajax({
-    //    type: "POST",
-    //    url: 'http://www.alectrievel.com/schoolwork/CS0334/final/saveItem.php',
-    //    dataType: "json",
-    //    data: to_send,
-    //    success: function(data) {
-    //        console.log(data);
-    //    }
-    //});
+    $.ajax({
+       type: "POST",
+       url: 'http://www.alectrievel.com/schoolwork/CS0334/final/php/saveItem.php',
+       contentType: "application/x-www-form-urlencoded",
+       data: "x=" + JSON.stringify(to_send),
+       success: function(data) {
+           console.log(data.responseText);
+       },
+       error: function(data) {
+        console.log(data.responseText);
+       }
+    });
 }
 
 $("#tblMusic").on('click', 'td i', function() {
@@ -98,10 +101,9 @@ $("#tblMusic").on('click', 'td i', function() {
         album: row.children[2].innerText,
         genre: row.children[3].innerText,
         price: row.children[4].innerText,
-        user_id: parseInt(window.localStorage.getItem('user_id'))
+        user_id: parseInt(localStorage['logged_in'])
     }
 
-    console.log(music_data);
     saveItemToDatabase(music_data, 'music');
 });
 
@@ -114,10 +116,9 @@ $("#tblTV").on('click', 'td i', function() {
         show: row.children[1].innerText,
         genre: row.children[2].innerText,
         price: row.children[3].innerText,
-        user_id: parseInt(window.localStorage.getItem('user_id'))
+        user_id: parseInt(localStorage['logged_in'])
     }
 
-    console.log(tv_data);
     saveItemToDatabase(tv_data, 'tv');
 });
 
@@ -130,9 +131,8 @@ $("#tblMovie").on('click', 'td i', function() {
         director: row.children[1].innerText,
         genre: row.children[2].innerText,
         price: row.children[3].innerText,
-        user_id: parseInt(window.localStorage.getItem('user_id'))
+        user_id: parseInt(localStorage['logged_in'])
     }
 
-    console.log(movie_data);
     saveItemToDatabase(movie_data, 'movie');
 });

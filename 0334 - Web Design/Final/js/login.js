@@ -1,23 +1,5 @@
-﻿function logUserIn(username, password) {
-    $.ajax({
-        type: "POST",
-        url: "http://www.alectrievel.com/schoolwork/CS0334/final/login.php",
-        dataType: "application/json; charset=utf-8",
-        data: "{username: " + username + ", password: " + password + "}",
-        success: function (data) {
-
-        },
-        error: function(data) {
-
-        },
-        complete: function (data) {
-
-        }
-    });
-}
-
-function isLoggedIn() {
-    if (window.localStorage.getItem('logged_in')) {
+﻿function isLoggedIn() {
+    if (localStorage['logged_in']) {
         return true;
     }
     else {
@@ -26,10 +8,27 @@ function isLoggedIn() {
 }
 
 function redirectIfNotLoggedIn() {
-    if (window.localStorage.getItem('logged_in')) {
+    if (localStorage['logged_in'] !== undefined && localStorage['logged_in'] !== null) {
         return true;
     }
     else {
-        window.location.href = 'login.html';
+        localStorage['logged_in'] = getParameterByName('id');
+
+        if (localStorage['logged_in'] !== undefined && localStorage['logged_in'] !== null) {
+            return true;
+        }
+        else {
+            window.location.href = 'login.html';
+        }
     }
+}
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
