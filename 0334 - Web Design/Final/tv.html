@@ -106,30 +106,19 @@
     <script src="js/util.js"></script>
     <script src="js/main.js"></script>
     <script src="js/dataTables.min.js"></script>
+    <script src="js/loader.js"></script>
     <script src="js/login.js"></script>
     <script src="js/search.js"></script>
     <script>
         $(document).ready(function () {
-            if (isLoggedIn()) {
-                $('#btnLogin').toggle();
-                $('#btnRegister').toggle();
-            }
-            else {
-                $('#btnViewCart').toggle();
-                $('#btnLogout').toggle();
-            }
-
-            setTimeout(function () {
-                $('#loader').fadeOut(250);
-                $('#wrapper').fadeIn(250);
-            }, 2500);
+            loadMenuOptions();
+            startLoader();
         });
 
         $('#btnSearch').on('click touch', function (e) {
             toggleLoader();
             e.preventDefault();
-            e.stopImmediatePropagation();
-            
+            e.stopImmediatePropagation(); 
             setTimeout(function () {
                 search('tvShow', $('#txtSearchTerm').val(), "tvEpisode", $('#ddlSearchType').val(), $('#tblTV'));
             }, 1000);

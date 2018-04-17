@@ -48,28 +48,22 @@
                     <h1>Login to uTunes</h1>
                     <h5>You need to be logged in to uTunes to save content to your library</h5>
                     <hr />
-                    <form method="POST" action="http://www.alectrievel.com/Schoolwork/CS0334/final/PHP/login.php" name="register">
+                    <form method="POST" action="http://www.alectrievel.com/schoolwork/CS0334/final/php/login.php" name="login">
                         <div class="row uniform">
                             <div class="12u$">
-                                <input type="email" maxlength="255" name="name" placeholder="Email" required />
+                                <input type="email" maxlength="255" name="log_email" placeholder="Email" required />
                             </div>
                         </div>
                         <div class="row uniform">
                             <div class="12u$">
-                                <input type="password" pattern=".{8,255}" required title="Password must be 8 characters minimum" name="password" placeholder="Password" required />
-                            </div>
-                        </div>
-                        <div class="row uniform">
-                            <div class="12u$">
-                                <input type="checkbox" id="remember" name="remember">
-                                <label for="remember">Remember Me</label>
+                                <input type="password" pattern=".{8,255}" required title="Password must be 8 characters minimum" name="log_password" placeholder="Password" required />
                             </div>
                         </div>
                         <div class="row uniform">
                             <div class="12u$">
                                 <ul class="actions">
                                     <li>
-                                        <input type="submit" value="Login" class="special" /></li>
+                                        <input type="submit" value="Login" name='login' class="special" id='btnLogin' /></li>
                                     <li>
                                         <input type="reset" value="Reset" /></li>
                                 </ul>
@@ -98,13 +92,11 @@
     <script src="js/util.js"></script>
     <script src="js/main.js"></script>
     <script src="js/dataTables.min.js"></script>
+    <script src="js/loader.js"></script>
     <script src="js/login.js"></script>
     <script src="js/search.js"></script>
-    <script>
-        setTimeout(function () {
-            $('#loader').fadeOut(250);
-            $('#wrapper').fadeIn(250);
-        }, 2500);
+    <script type="text/javascript">
+        startLoader();
     </script>
 </body>
 </html>
