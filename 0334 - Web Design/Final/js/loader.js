@@ -5,6 +5,11 @@ function startLoader() {
     }, 1500);
 }
 
+function toggleLoader() {
+    $('#loader').fadeToggle();
+    $('#wrapper').fadeToggle();
+}
+
 function loadMenuOptions() {
     if (isLoggedIn()) {
         $('#btnLogin').toggle();
