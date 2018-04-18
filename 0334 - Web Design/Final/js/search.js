@@ -1,23 +1,4 @@
-﻿function toggleLoader() {
-    $('#loader').fadeToggle();
-    $('#wrapper').fadeToggle();
-}
-
-function setupDataTables(table_list) {
-    table_list.forEach(e => {
-        e.DataTable({
-            paging: false
-        });
-});
-}
-
-function resetTable(table) {
-    table.DataTable().destroy();
-    table.children('tbody').empty();
-    table.fadeIn();
-}
-
-function search(media, term, entity, attribute, table) {
+﻿function search(media, term, entity, attribute, table) {
     const media_sanitized = "?media=" + sanitizeString(media);
     const term_sanitized = "&term=" + sanitizeString(term);
     const entity_sanitized = "&entity=" + sanitizeString(entity);
@@ -63,13 +44,13 @@ function saveItemToDatabase(item, type) {
     let to_send = {};
 
     if (type === 'music') {
-        to_send = {music: item};
+        to_send = {music: JSON.stringify(item)};
     } 
     else if (type === 'tv') {
-        to_send = {tv: item};
+        to_send = {tv: JSON.stringify(item)};
     }
     else if (type === 'movie') {
-        to_send = {movie: item};
+        to_send = {movie: JSON.stringify(item)};
     }
     else {
         return false;
@@ -78,61 +59,27 @@ function saveItemToDatabase(item, type) {
     console.log(to_send);
 
     $.ajax({
-       type: "POST",
-       url: 'http://www.alectrievel.com/schoolwork/CS0334/final/php/saveItem.php',
-       contentType: "application/x-www-form-urlencoded",
-       data: "x=" + JSON.stringify(to_send),
-       success: function(data) {
-           console.log(data.responseText);
-       },
-       error: function(data) {
-        console.log(data.responseText);
-       }
+        type: "POST",
+        url: 'http://www.alectrievel.com/schoolwork/CS0334/final/php/saveItem.php',
+        data: to_send,
+        success: function(data) {
+            console.log(data);
+            
+            if(data === 'ok') {
+                swal({
+                    type: 'success',
+                    title: 'Great!',
+                    text: 'The selected item was saved to your cart',
+                    footer: "<a href='cart.html'>View your cart here</a>"
+                })
+            }
+            else {
+                swal({
+                    type: 'error',
+                    title: 'Oh no!',
+                    text: 'Something went wrong. Please try again.',
+                })
+            }
+        }
     });
 }
-
-$("#tblMusic").on('click', 'td i', function() {
-    redirectIfNotLoggedIn();
-
-    const row = $(this).parent().parent()[0];
-    const music_data = {
-        name: row.children[0].innerText,
-        artist: row.children[1].innerText,
-        album: row.children[2].innerText,
-        genre: row.children[3].innerText,
-        price: row.children[4].innerText,
-        user_id: parseInt(localStorage['logged_in'])
-    }
-
-    saveItemToDatabase(music_data, 'music');
-});
-
-$("#tblTV").on('click', 'td i', function() {
-    redirectIfNotLoggedIn();
-
-    const row = $(this).parent().parent()[0];
-    const tv_data = {
-        episode: row.children[0].innerText,
-        show: row.children[1].innerText,
-        genre: row.children[2].innerText,
-        price: row.children[3].innerText,
-        user_id: parseInt(localStorage['logged_in'])
-    }
-
-    saveItemToDatabase(tv_data, 'tv');
-});
-
-$("#tblMovie").on('click', 'td i', function() {
-    redirectIfNotLoggedIn();
-
-    const row = $(this).parent().parent()[0];
-    const movie_data = {
-        title: row.children[0].innerText,
-        director: row.children[1].innerText,
-        genre: row.children[2].innerText,
-        price: row.children[3].innerText,
-        user_id: parseInt(localStorage['logged_in'])
-    }
-
-    saveItemToDatabase(movie_data, 'movie');
-});

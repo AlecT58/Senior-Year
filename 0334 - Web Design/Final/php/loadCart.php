@@ -15,13 +15,13 @@
 
     if(isset($_GET['user_id']) && isset($_GET['type'])) {
         if($_GET['type'] == 'music') {
-            var_dump(getAllSongs($conn, $_GET['user_id']));
+            echo json_encode(getAllSongs($conn, $_GET['user_id']));
         }
         elseif($_GET['type'] == 'movie') {
-            var_dump(getAllMovies($conn, $_GET['user_id']));
+            echo json_encode(getAllMovies($conn, $_GET['user_id']));
         }
         elseif ($_GET['type'] == 'tv') {
-            var_dump(getAllShows($conn, $_GET['user_id']));
+            echo json_encode(getAllShows($conn, $_GET['user_id']));
         }
         $conn->close();
     }
