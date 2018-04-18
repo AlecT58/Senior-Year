@@ -55,14 +55,13 @@
                                 <th>Song Name</th>
                                 <th>Artist</th>
                                 <th>Album</th>
-                                <th>Genre</th>
                                 <th>Price</th>
-                                <th>Preview</th>
-                                <th>Remove</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
+
+                    <hr>
 
                     <table id="tblMovie" class="">
                         <thead>
@@ -77,6 +76,8 @@
                         </thead>
                         <tbody></tbody>
                     </table>
+
+                    <hr>
 
                     <table id="tblTV" class="">
                         <thead>
@@ -122,7 +123,14 @@
         $(document).ready(function () {
             redirectIfNotLoggedIn();
             startLoader();
-            setupDataTables([$('#tblMusic'), $('#tblMovie'), $('#tblTV')]);
+
+            $.when(
+                setupDataTables([$('#tblMusic'), $('#tblMovie'), $('#tblTV')]),
+                getSongsInCart(),
+                getMoviesInCart(),
+                getTVInCart()
+            )
+            .then(toggleLoader());           
         });
     </script>
 </body>
