@@ -40,6 +40,7 @@
             <ul class="actions vertical">
                 <li><a href="register.html" class="button fit">Register</a></li>
                 <li><a href="login.html" class="button fit">Log In</a></li>
+                <li><a id='viewSource' class="button fit">View Source</a></li>
             </ul>
         </nav>
 
@@ -126,6 +127,11 @@
     <script type='text/javascript'>
     $(document).ready(function() {
         startLoader();
+        $('#viewSource').on('click touch', function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            window.open('http://www.alectrievel.com/schoolwork/CS0334/final/source/');
+        });
     });
     </script>
 </body>
