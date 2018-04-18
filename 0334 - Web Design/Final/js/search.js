@@ -56,8 +56,6 @@ function saveItemToDatabase(item, type) {
         return false;
     }
 
-    console.log(to_send);
-
     $.ajax({
         type: "POST",
         url: 'http://www.alectrievel.com/schoolwork/CS0334/final/php/saveItem.php',

@@ -4,7 +4,7 @@ function getSongsInCart() {
         url: "http://www.alectrievel.com/schoolwork/CS0334/final/php/loadCart.php?type=music&user_id=" + localStorage['logged_in'],
         dataType: "application/json; charset=UTF8;",
         cache: true,
-        success: function(data) {
+        success: function (data) {
             resetTable($('#tblMusic'));
         },
         complete: function (data) {
@@ -23,7 +23,7 @@ function getMoviesInCart() {
         url: "http://www.alectrievel.com/schoolwork/CS0334/final/php/loadCart.php?type=movie&user_id=" + localStorage['logged_in'],
         dataType: "application/json; charset=UTF8;",
         cache: true,
-        success: function(data) {
+        success: function (data) {
             resetTable($('#tblMovie'));
         },
         complete: function (data) {
@@ -42,7 +42,7 @@ function getTVInCart() {
         url: "http://www.alectrievel.com/schoolwork/CS0334/final/php/loadCart.php?type=tv&user_id=" + localStorage['logged_in'],
         dataType: "application/json; charset=UTF8;",
         cache: true,
-        success: function(data) {
+        success: function (data) {
             resetTable($('#tblTV'));
         },
         complete: function (data) {
@@ -58,14 +58,12 @@ function getTVInCart() {
 function displayCartResults(table, unparsed_item) {
     const item = JSON.parse(unparsed_item);
 
-    if(item !== null) {
+    if (item !== null) {
         if (table === 'music') {
             $('#tblMusic tbody').append("<tr style='rgba(212, 212, 255, 0.035);'><td>" + item.name + "</td><td> " + item.artist + "</td><td>" + item.album + "</td><td>$" + item.price + "</td></tr>");
-        }
-        else if (table === 'tv') {
+        } else if (table === 'tv') {
             $('#tblTV tbody').append("<tr style='rgba(212, 212, 255, 0.035);'><td>" + item.name + "</td><td>" + item.episode + "</td><td>" + item.genre + "</td><td>$" + item.price + "</td></tr>");
-        }
-        else if (table === 'movie') {
+        } else if (table === 'movie') {
             $('#tblMovie tbody').append("<tr style='rgba(212, 212, 255, 0.035);'><td>" + item.name + "</td><td>" + item.director + "</td><td>" + item.genre + "</td><td>$" + item.price + "</td></tr>");
         }
     }

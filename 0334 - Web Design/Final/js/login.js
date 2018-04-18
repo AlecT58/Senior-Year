@@ -1,8 +1,7 @@
 ﻿function isLoggedIn() {
     if (localStorage['logged_in']) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -10,14 +9,12 @@
 function redirectIfNotLoggedIn() {
     if (localStorage['logged_in'] !== undefined && localStorage['logged_in'] !== null) {
         return true;
-    }
-    else {
+    } else {
         localStorage['logged_in'] = getParameterByName('id');
 
         if (localStorage['logged_in'] !== undefined && localStorage['logged_in'] !== null) {
             return true;
-        }
-        else {
+        } else {
             window.location.href = 'login.html';
         }
     }

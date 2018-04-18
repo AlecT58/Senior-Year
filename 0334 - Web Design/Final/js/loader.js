@@ -14,8 +14,7 @@ function loadMenuOptions() {
     if (isLoggedIn()) {
         $('#btnLogin').toggle();
         $('#btnRegister').toggle();
-    }
-    else {
+    } else {
         $('#btnViewCart').toggle();
         $('#btnLogout').toggle();
     }
