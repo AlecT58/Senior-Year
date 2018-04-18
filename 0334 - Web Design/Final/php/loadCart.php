@@ -58,11 +58,11 @@
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 $movie->name = $row["movie_name"];
-                $movie->artist = $row["director"];
-                $movie->album = $row["genre"];
+                $movie->director = $row["director"];
+                $movie->genre = $row["genre"];
                 $movie->price = $row["price"];
                 
-                array_push($json, json_encode($song));
+                array_push($json, json_encode($movie));
             }
         } 
         else {
@@ -80,12 +80,12 @@
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $tv->name = $row["movie_name"];
-                $tv->artist = $row["director"];
-                $tv->album = $row["genre"];
+                $tv->name = $row["show_name"];
+                $tv->episode = $row["episode"];
+                $tv->genre = $row["genre"];
                 $tv->price = $row["price"];
                 
-                array_push($json, json_encode($song));
+                array_push($json, json_encode($tv));
             }
         } 
         else {
