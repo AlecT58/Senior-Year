@@ -1,0 +1,7 @@
+CREATE TABLE Music (
+   	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    song_name VARCHAR(255) NOT NULL,
+    artist VARCHAR(255) NOT NULL,
+    album VARCHAR(255) NOT NULL,
+    price DECIMAL(15,2)      
+)

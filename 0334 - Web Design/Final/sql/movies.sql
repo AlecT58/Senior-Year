@@ -1,0 +1,7 @@
+CREATE TABLE Movie (
+   	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    movie_name VARCHAR(255) NOT NULL,
+    director VARCHAR(255) NOT NULL,
+    genre VARCHAR(255) NOT NULL,
+    price DECIMAL(15,2)      
+)
